@@ -1,0 +1,23 @@
+{
+  "name": "fi-vtt-nubomedia-kurento-module-armarkerdetector",
+  "description": "arfilter",
+  "main": "lib/index.js",
+  "authors": [
+    "Markus Ylikerala <markus.ylikerala@vtt.fi>"
+  ],
+  "license": "LGPL",
+  "keywords": [
+    "Kurento",
+    "module",
+    "plugin"
+  ],
+  "homepage": "https://github.com/nubomedia-vtt/armodule",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

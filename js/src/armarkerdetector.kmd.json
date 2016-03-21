@@ -1,0 +1,364 @@
+{
+  "name": "armarkerdetector",
+  "version": "1.0.0",
+  "kurentoVersion": "^6.3.0",
+  "imports": [
+    {
+      "name": "core",
+      "version": "^6.3.0",
+      "mavenVersion": "[6.3.0,7.0.0-SNAPSHOT)",
+      "npmVersion": ">=6.3.0 <7.0.0"
+    },
+    {
+      "name": "elements",
+      "version": "^6.3.0",
+      "mavenVersion": "[6.3.0,7.0.0-SNAPSHOT)",
+      "npmVersion": ">=6.3.0 <7.0.0"
+    },
+    {
+      "name": "filters",
+      "version": "^6.3.0",
+      "mavenVersion": "[6.3.0,7.0.0-SNAPSHOT)",
+      "npmVersion": ">=6.3.0 <7.0.0"
+    }
+  ],
+  "code": {
+    "api": {
+      "js": {
+        "nodeName": "kurento-module-armarkerdetector",
+        "npmDescription": "",
+        "npmVersion": "1.0.0"
+      },
+      "java": {
+        "mavenGroupId": "org.kurento.module",
+        "packageName": "org.kurento.module.armarkerdetector",
+        "mavenArtifactId": "armarkerdetector",
+        "mavenVersion": "1.0.0"
+      }
+    },
+    "implementation": {
+      "lib": "libkmsarmarkerdetector",
+      "cppNamespace": "kurento::module::armarkerdetector"
+    }
+  },
+  "remoteClasses": [
+    {
+      "name": "ArMarkerdetector",
+      "doc": "ArFilter interface. Documentation about the module",
+      "extends": "OpenCVFilter",
+      "constructor": {
+        "params": [
+          {
+            "name": "mediaPipeline",
+            "doc": "the parent :rom:cls:`MediaPipeline`",
+            "type": "MediaPipeline"
+          }
+        ],
+        "doc": "Create an element"
+      },
+      "methods": [
+        {
+          "params": [
+            {
+              "name": "id",
+              "doc": "model id",
+              "type": "int"
+            },
+            {
+              "name": "type",
+              "doc": "operation type",
+              "type": "int"
+            },
+            {
+              "name": "value",
+              "doc": "magnitude",
+              "type": "float"
+            }
+          ],
+          "name": "setPose",
+          "doc": "sets operation ie position/rotation/scale of 3D model"
+        },
+        {
+          "params": [
+            {
+              "name": "enable",
+              "doc": "state to enable or disable augmentation",
+              "type": "boolean"
+            }
+          ],
+          "name": "enableAugmentation",
+          "doc": "Sets the enabled state of the 2D and 3D rendering"
+        },
+        {
+          "params": [
+            {
+              "name": "enable",
+              "doc": "state to enable of disable generation of MarkerCountEvents",
+              "type": "boolean"
+            }
+          ],
+          "name": "enableMarkerCountEvents",
+          "doc": "Sets the enabled state for notifying the listener when the number of markers changes"
+        },
+        {
+          "params": [
+            {
+              "name": "enable",
+              "doc": "state to enable of disable generation of TickEvents",
+              "type": "boolean"
+            }
+          ],
+          "name": "enableTickEvents",
+          "doc": "Sets the enabled state for notifying the listener when number of ticks has elapsed for monitoring"
+        },
+        {
+          "params": [
+            {
+              "name": "arThing",
+              "doc": "set of ArThings",
+              "type": "ArThing[]"
+            }
+          ],
+          "name": "setArThing",
+          "doc": "Passes set of augmentables ie info about markers/planars that should be tracked and 2D/3D models to be rendered. See description of ArThing for more details."
+        },
+        {
+          "params": [
+            {
+              "name": "enable",
+              "doc": "state to enable or disable MarkerPoseEvents based on time",
+              "type": "boolean"
+            },
+            {
+              "name": "frequency",
+              "doc": "generate with Hz",
+              "type": "float"
+            }
+          ],
+          "name": "setMarkerPoseFrequency",
+          "doc": "Sets the enabled state for marker events and how often these events should be generated based on time"
+        },
+        {
+          "params": [
+            {
+              "name": "enable",
+              "doc": "state to enable or disable MarkerPoseEvents based on frames",
+              "type": "boolean"
+            },
+            {
+              "name": "frequency",
+              "doc": "generate for every nth frame, n e [1, ...)",
+              "type": "int"
+            }
+          ],
+          "name": "setMarkerPoseFrameFrequency",
+          "doc": "Sets the enabled state for marker events and how often these events should be generated based on number of frames"
+        }
+      ],
+      "events": [
+        "MarkerCount",
+        "MarkerPose",
+        "Tick"
+      ]
+    }
+  ],
+  "complexTypes": [
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "key",
+          "doc": "unique key for a value",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "doc": "arbitrary value",
+          "type": "String"
+        }
+      ],
+      "name": "ArKvpString",
+      "doc": "AR Key-Value-Pair of Strings and Strings for passing data"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "key",
+          "doc": "unique key for a value",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "doc": "arbitrary value",
+          "type": "int"
+        }
+      ],
+      "name": "ArKvpInteger",
+      "doc": "AR Key-Value-Pair of Strings and integers for passing data"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "key",
+          "doc": "unique key for a value",
+          "type": "String"
+        },
+        {
+          "name": "value",
+          "doc": "arbitrary value",
+          "type": "float"
+        }
+      ],
+      "name": "ArKvpFloat",
+      "doc": "AR Key-Value-Pair of Strings and floats for passing data"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "markerId",
+          "doc": "marker id",
+          "type": "int"
+        },
+        {
+          "name": "matrixModelview",
+          "doc": "marker modelview matrix",
+          "type": "float[]"
+        }
+      ],
+      "name": "ArMarkerPose",
+      "doc": "Pose doc"
+    },
+    {
+      "typeFormat": "ENUM",
+      "values": [
+        "TYPE2D",
+        "TYPE3D"
+      ],
+      "name": "OverlayType",
+      "doc": "Describes which kind of model should be rendered ie 2D or 3D"
+    },
+    {
+      "typeFormat": "REGISTER",
+      "properties": [
+        {
+          "name": "markerId",
+          "doc": "marker id",
+          "type": "int"
+        },
+        {
+          "name": "overlayType",
+          "doc": "2D or 3D",
+          "type": "OverlayType"
+        },
+        {
+          "name": "strings",
+          "doc": "all the sting values relating to the augmentable eg model url . See DevelopersGuide for more details.",
+          "type": "ArKvpString[]"
+        },
+        {
+          "name": "integers",
+          "doc": "all the integer values relating to the augmentable",
+          "type": "ArKvpInteger[]"
+        },
+        {
+          "name": "floats",
+          "doc": "all the float values relating to the augmentable",
+          "type": "ArKvpFloat[]"
+        }
+      ],
+      "name": "ArThing",
+      "doc": "Container for passing data about the augmentable ie the target (marker or planar) to be tracked and model (2D or 3D) to be rendered"
+    }
+  ],
+  "events": [
+    {
+      "properties": [
+        {
+          "name": "sequenceNumber",
+          "doc": "sequence number",
+          "type": "int"
+        },
+        {
+          "name": "countTimestamp",
+          "doc": "timestamp",
+          "type": "int"
+        },
+        {
+          "name": "markerId",
+          "doc": "marker id",
+          "type": "int"
+        },
+        {
+          "name": "markerCount",
+          "doc": "Number of visible markers with the specified id",
+          "type": "int"
+        },
+        {
+          "name": "markerCountDiff",
+          "doc": "How much the markerCount was changed from the previous situation",
+          "type": "int"
+        }
+      ],
+      "extends": "Media",
+      "name": "MarkerCount",
+      "doc": "An event that is sent when the number of visible markers is changed. Tracking coordinates for the markers is going to be sent with some other approach."
+    },
+    {
+      "properties": [
+        {
+          "name": "sequenceNumber",
+          "doc": "sequence number",
+          "type": "int"
+        },
+        {
+          "name": "poseTimestamp",
+          "doc": "timestamp",
+          "type": "int"
+        },
+        {
+          "name": "width",
+          "doc": "resolution width",
+          "type": "int"
+        },
+        {
+          "name": "height",
+          "doc": "resolution height",
+          "type": "int"
+        },
+        {
+          "name": "matrixProjection",
+          "doc": "marker projection matrix",
+          "type": "float[]"
+        },
+        {
+          "name": "markerPose",
+          "doc": "marker pose",
+          "type": "ArMarkerPose[]"
+        }
+      ],
+      "extends": "Media",
+      "name": "MarkerPose",
+      "doc": "Matrices for marker pose"
+    },
+    {
+      "properties": [
+        {
+          "name": "msg",
+          "doc": "message descriping the tick",
+          "type": "String"
+        },
+        {
+          "name": "tickTimestamp",
+          "doc": "timestamp",
+          "type": "int"
+        }
+      ],
+      "extends": "Media",
+      "name": "Tick",
+      "doc": "An event that is sent from some predifined monitoring points of the module "
+    }
+  ]
+}
